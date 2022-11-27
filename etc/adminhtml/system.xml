@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Hanesbrands, Inc. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
+    <system>
+        <section id="born_vertex" translate="label" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+            <label>Vertex Tax</label>
+            <tab>born</tab>
+            <resource>Born_VertexTax::config</resource>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="0">
+                <label>General Configuration</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Enable Tax fallback</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="default_percentage" translate="label comment" type="text" sortOrder="20" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>Tax Fallback Percentage</label>
+                    <comment>Default percentage used if Vertex request fails</comment>
+                </field>
+            </group>
+
+            <group id="recalculation" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1"
+                   showInStore="0">
+                <label>Tax Recalculation Before Shipment</label>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1"
+                       showInStore="0">
+                    <label>Tax Recalculation</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+                <field id="invoice_enabled" translate="label" type="select" sortOrder="11" showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="0">
+                    <label>Create Invoice after Shipment</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[Invoice Create after to Vertex on Shipment.]]></comment>
+                    <depends>
+                        <field id="enabled">1</field>
+                    </depends>
+                </field>
+            </group>
+
+            <group id="dev" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+                   showInStore="0">
+                <label>Developer Configuration</label>
+                <field id="test_fail_enabled" translate="label comment" type="select" sortOrder="10" showInDefault="1"
+                       showInWebsite="1" showInStore="0">
+                    <label>Fail Vertex API</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment>Will intently fail Vertex requests, used for testing default Vertex percentage</comment>
+                </field>
+            </group>
+        </section>
+        <section id="born_modules">
+            <group id="modules">
+                <field id="enable_born_vertextax"
+                       translate="label"
+                       type="select"
+                       sortOrder="10"
+                       showInDefault="1"
+                       showInWebsite="1"
+                       showInStore="0">
+                    <label>Enable Born_VertexTax module</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                </field>
+            </group>
+        </section>
+    </system>
+</config>

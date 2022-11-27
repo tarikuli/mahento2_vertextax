@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Hanesbrands, Inc. All rights reserved.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="quote_item" resource="checkout" engine="innodb" comment="Sales Flat Quote">
+        <column xsi:type="varchar" name="vertex_item_tax_data" nullable="true" length="255" comment="Vertex item tax"/>
+        <column xsi:type="varchar" name="item_shipping_costs" nullable="true" length="255"
+                comment="Item shipping costs"/>
+    </table>
+    <table name="sales_order_item" resource="sales" comment="Sales Flat Order Item">
+        <column xsi:type="varchar" name="vertex_item_tax_data" nullable="true" length="255" comment="Vertex item tax"/>
+        <column xsi:type="varchar" name="coupon_detail" nullable="true" length="255" comment="Vertex Coupon Detail"/>
+    </table>
+</schema>

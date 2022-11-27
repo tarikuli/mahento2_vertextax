@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Hanesbrands, Inc. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_order_shipment_save_after">
+        <observer name="vertex_create_invoice_after_ship" instance="Born\VertexTax\Observer\VertexInvoicerProcessor"/>
+    </event>
+</config>

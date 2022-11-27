@@ -1,0 +1,48 @@
+{
+  "name": "hanesce/gra-module-vertextax",
+  "description": "",
+  "require": {
+    "php": "~7.3.0|~7.4.0|^8.1",
+    "hanesce/gra-module-core": "*",
+    "magento/framework": "103.*",
+    "magento/module-catalog": "*",
+    "magento/magento-composer-installer": "*"
+  },
+  "require-dev": {
+    "allure-framework/allure-phpunit": "*",
+    "pdepend/pdepend": "^2.5.2",
+    "phpmd/phpmd": "@stable",
+    "phpro/grumphp": "*",
+    "phpunit/phpunit": "^9",
+    "sebastian/phpcpd": "*",
+    "squizlabs/php_codesniffer": "*",
+    "magento/magento-coding-standard": "^6.0.0",
+    "magento/magento2-functional-testing-framework": "^2.7.1",
+    "magento/magento2-base": "2.3.6|2.3.7|2.3.7-p1|2.4.*"
+  },
+  "repositories": {
+    "repo": {
+      "type": "composer",
+      "url": "https://repo.magento.com"
+    },
+    "private-packagist": {
+      "type": "composer",
+      "url": "https://repo.packagist.com/hanesce/"
+    }
+  },
+  "suggest": {},
+  "type": "magento2-module",
+  "license": [],
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Born\\VertexTax\\": ""
+    }
+  },
+  "scripts": {
+    "post-install-cmd": "vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/",
+    "post-update-cmd": "vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/"
+  }
+}

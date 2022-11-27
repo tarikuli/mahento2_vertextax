@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Hanesbrands, Inc. All rights reserved.
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Vertex\Tax\Model\Calculator" type="Born\VertexTax\Model\Calculator"/>
+    <type name="Magento\Quote\Model\Quote\Item\ToOrderItem">
+        <plugin name="Vertex::Covert" type="Born\VertexTax\Plugin\Quote\Model\ToOrderItem" sortOrder="100"/>
+    </type>
+    <type name="Magento\Quote\Model\QuoteManagement">
+        <plugin name="Vertex::QuoteManagement" type="Born\VertexTax\Plugin\Quote\Model\QuoteManagement" sortOrder="10"/>
+    </type>
+    <type name="Vertex\Tax\Model\DateTimeImmutableFactory">
+        <plugin name="DateTimePlugin" type="Born\VertexTax\Plugin\DateTimeFactoryPlugin"/>
+    </type>
+    <type name="Magento\Sales\Model\ShipOrder">
+        <plugin name="tax_recalculate_befor_ship" type="Born\VertexTax\Plugin\Webapi\ShipOrderPlugin" sortOrder="01"/>
+    </type>
+    <type name="Vertex\Tax\Service\QuoteProxy">
+        <plugin name="vertex_jurisdiction_data" type="Born\VertexTax\Plugin\Quote\Model\QuoteProxyPlugin"/>
+    </type>
+    <type name="Vertex\Tax\Model\Api\Data\LineItemBuilder">
+        <plugin name="vertex_lineitembuilder" type="Born\VertexTax\Plugin\LineItemBuilder"/>
+    </type>
+    <preference for="Vertex\Tax\Model\FlexField\Extractor\ValueExtractor"
+                type="Born\VertexTax\Rewrite\ValueExtractor"/>
+
+    <preference for="Vertex\Tax\Model\FlexField\Processor\OrderGetterProcessor"
+                type="Born\VertexTax\Rewrite\OrderGetterProcessor"/>
+
+    <preference for="Vertex\Tax\Model\FlexField\Processor\ProductGetterProcessor"
+                type="Born\VertexTax\Rewrite\ProductGetterProcessor"/>
+
+    <preference for="Vertex\Tax\Model\Api\Data\SellerBuilder"
+                type="Born\VertexTax\Rewrite\SellerBuilder"/>
+
+    <type name="Magento\Sales\Api\InvoiceRepositoryInterface">
+        <plugin name="get_vertex_invoice_item_attributes" type="Vertex\Tax\Model\Plugin\InvoiceRepositoryPlugin"
+                disabled="true"/>
+    </type>
+</config>
